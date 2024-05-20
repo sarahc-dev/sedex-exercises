@@ -13,10 +13,15 @@ package org.example
 
 class Fizzbuzz {
     fun runFizzbuzz(input: Int): String {
-        if (input == 3) {
-            return "Fizz"
-        } else {
-            return "Buzz"
+        return when {
+            input % 3 == 0 && input % 5 == 0 && input % 7 == 0 -> "FizzBuzzCazz"
+            input % 3 == 0 && input % 5 == 0 -> "FizzBuzz"
+            input % 3 == 0 && input % 7 == 0 -> "FizzCazz"
+            input % 5 == 0 && input % 7 == 0 -> "BuzzCazz"
+            input % 3 == 0 -> "Fizz"
+            input % 5 == 0 -> "Buzz"
+            input % 7 == 0 -> "Cazz"
+            else -> input.toString()
         }
     }
 }
