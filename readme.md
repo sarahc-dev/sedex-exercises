@@ -1,3 +1,1 @@
 # Sedex exercises
-
-test
