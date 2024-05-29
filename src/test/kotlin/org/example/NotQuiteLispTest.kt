@@ -36,7 +36,7 @@ class NotQuiteLispTest {
     @Test
     fun `If input is ), return 1`() {
         val expected = 1
-        val actual = NotQuiteLisp().getPosition("(")
+        val actual = NotQuiteLisp().getPosition(")")
         assertEquals(expected, actual)
     }
 
@@ -65,6 +65,4 @@ class NotQuiteLispTest {
         val actual = NotQuiteLisp().getPosition(input)
         assertEquals(expected, actual)
     }
-
-
 }

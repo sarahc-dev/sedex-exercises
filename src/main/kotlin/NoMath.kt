@@ -15,6 +15,7 @@ class NoMath {
         return d.split("x").map { it.toInt() }.sorted()
     }
 
+    // Part 1
     fun wrappingPaperSquareFoot(d: String): Int {
         val dimensions = getSortedDimensions(d)
         val squareFeet = dimensions[0] * dimensions[1] * 2 + dimensions[1] * dimensions[2] * 2 + + dimensions[0] * dimensions[2] * 2
@@ -27,6 +28,7 @@ class NoMath {
         return getInput(filename).fold(0) { sum, element -> sum + wrappingPaperSquareFoot(element)}
     }
 
+    // Part 2
     fun ribbonLength(d: String): Int {
         val dimensions = getSortedDimensions(d)
         val feetOfRibbon = dimensions[0] * 2 + dimensions[1] * 2
