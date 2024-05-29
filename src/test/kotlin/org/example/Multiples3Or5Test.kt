@@ -18,8 +18,8 @@ class Multiples3Or5Test {
     }
 
     @Test
-    fun `If input is 5, return 8`() {
-        val expected = 8
+    fun `If input is 5, return 3`() {
+        val expected = 3
         val actual = Multiples3Or5().solution(5)
         assertEquals(expected, actual)
     }
