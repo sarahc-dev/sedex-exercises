@@ -28,4 +28,11 @@ class CountingDuplicatesTest {
         val actual = CountingDuplicates().duplicateCount("aabb")
         assertEquals(expected, actual)
     }
+
+    @Test
+    fun `If input is aAbb, return 2`() {
+        val expected = 2
+        val actual = CountingDuplicates().duplicateCount("aAbb")
+        assertEquals(expected, actual)
+    }
 }
