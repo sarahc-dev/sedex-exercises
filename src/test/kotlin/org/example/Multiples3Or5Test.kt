@@ -51,4 +51,12 @@ class Multiples3Or5Test {
         val actual = Multiples3Or5().solution(200)
         assertEquals(expected, actual)
     }
+
+    @Test
+    fun `If input is negative, return 0`() {
+        val expected = 0
+        assertEquals(expected, Multiples3Or5().solution(-1))
+        assertEquals(expected, Multiples3Or5().solution(-3))
+        assertEquals(expected, Multiples3Or5().solution(-10))
+    }
 }
