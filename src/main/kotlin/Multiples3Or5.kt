@@ -2,6 +2,7 @@ package org.example
 
 class Multiples3Or5 {
     fun solution(number: Int): Int {
-        return if (number <= 5) 3 else 8
+        val multiples = (3..<number).filter { it % 3 == 0 || it % 5 == 0 }
+        return multiples.sum()
     }
 }
