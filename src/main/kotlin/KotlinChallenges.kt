@@ -35,7 +35,7 @@ class KotlinChallenges {
 //        }
 //        return true
 
-        return list.withIndex().all { (idx) -> list[idx] == list[list.size - idx - 1]}
+        return list.withIndex().all { (idx) -> list[idx] == list[list.size - idx - 1] }
     }
 
     // 7. Flatten a nested list structure with different types
@@ -70,7 +70,7 @@ class KotlinChallenges {
     }
 
     // 9. Pack consecutive duplicates into sublists
-    fun pack(list: List<Char>):MutableList<MutableList<Char>> {
+    fun pack(list: List<Char>): MutableList<MutableList<Char>> {
         val sublists = mutableListOf<MutableList<Char>>()
         list.forEachIndexed { index, char ->
             if (index == 0 || char != list[index - 1]) {
@@ -91,6 +91,45 @@ class KotlinChallenges {
     // 11. Modified run-length encoding - it element has no duplicates it's simply copied into results list
     fun encodeModified(list: List<Char>): List<*> {
         val sublists = pack(list)
-        return sublists.map { if (it.size > 1) Pair(it.size, it[0]) else it[0]}
+        return sublists.map { if (it.size > 1) Pair(it.size, it[0]) else it[0] }
     }
+
+    // 12. Decode a run-length encoded list
+    fun decode(list: List<Pair<Int, Char>>): List<Char> {
+        return list.flatMap { pair -> List(pair.first) { pair.second } }
+    }
+
+    // 13. Run-length encoding direct
+    fun encodeDirect(list: List<Char>): MutableList<Pair<Int, Char>> {
+        val result = mutableListOf<Pair<Int, Char>>()
+        list.forEach {
+            if (result.isEmpty() || result.last().second != it) {
+                result.add(Pair(1, it))
+            } else {
+                result[result.size - 1] = Pair(result.last().first + 1, it)
+            }
+        }
+        return result
+    }
+
+    // 14. Duplicate the elements of a list
+    fun duplicate(list: List<Char>): List<Char> {
+        return list.flatMap { char -> List(2) { char } }
+    }
+
+    // 15. Duplicate the elements N times
+    fun duplicateN(n: Int, list: List<Char>): List<Char> {
+        return list.flatMap { char -> List(n) { char } }
+    }
+
+    // 16. Drop every Nth element from list
+    fun drop(n: Int, list: List<Char>): List<Char> {
+        return list.filterIndexed { index, _ -> index !in n - 1 until list.size - 1 step n}
+    }
+
+    // 17. Split a list into two parts
+    fun split(i: Int, list: List<Char>): Pair<List<Char>, List<Char>> {
+        return Pair(list.take(i), list.takeLast(list.size - i))
+    }
+
 }

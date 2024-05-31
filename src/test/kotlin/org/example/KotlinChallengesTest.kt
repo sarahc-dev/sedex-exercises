@@ -113,4 +113,54 @@ class KotlinChallengesTest {
         val actual = KotlinChallenges().encodeModified(listWithDuplicates)
         assertEquals(expected, actual)
     }
+
+    // 12.
+    @Test
+    fun `decodes a run-length list`() {
+        val kotlinChallenges = KotlinChallenges()
+        val list = kotlinChallenges.encode(listWithDuplicates)
+        val expected = listOf('a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e')
+        val actual = kotlinChallenges.decode(list)
+        assertEquals(expected, actual)
+    }
+
+    // 13.
+    @Test
+    fun `run-length encoding direct solution`() {
+        val expected = listOf(Pair(4, 'a'), Pair(1, 'b'), Pair(2, 'c'), Pair(2, 'a'), Pair(1, 'd'), Pair(4, 'e'))
+        val actual = KotlinChallenges().encodeDirect(listWithDuplicates)
+        assertEquals(expected, actual)
+    }
+
+    // 14.
+    @Test
+    fun `duplicates the elements of a list`() {
+        val expected = listOf('a', 'a', 'b', 'b', 'c', 'c', 'c', 'c', 'd', 'd')
+        val actual = KotlinChallenges().duplicate("abccd".toList())
+        assertEquals(expected, actual)
+    }
+
+    // 15.
+    @Test
+    fun `duplicate the elements of a list n times`() {
+        val expected = listOf('a', 'a', 'a', 'b', 'b', 'b', 'c', 'c', 'c', 'c', 'c', 'c', 'd', 'd', 'd')
+        val actual = KotlinChallenges().duplicateN(3, "abccd".toList())
+        assertEquals(expected, actual)
+    }
+
+    // 16.
+    @Test
+    fun `drop every nth element`() {
+        val expected = listOf('a', 'b', 'd', 'e', 'g', 'h', 'j', 'k')
+        val actual = KotlinChallenges().drop(3, "abcdefghijk".toList())
+        assertEquals(expected, actual)
+    }
+
+    // 17.
+    @Test
+    fun `split a list into two parts`() {
+        val expected = Pair(listOf('a', 'b', 'c'), listOf('d', 'e', 'f', 'g', 'h', 'i', 'j', 'k'))
+        val actual = KotlinChallenges().split(3, "abcdefghijk".toList())
+        assertEquals(expected, actual)
+    }
 }
