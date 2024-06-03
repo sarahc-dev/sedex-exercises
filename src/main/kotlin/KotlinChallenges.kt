@@ -132,4 +132,29 @@ class KotlinChallenges {
         return Pair(list.take(i), list.takeLast(list.size - i))
     }
 
+    // 18. Extract a slice from a list
+    fun slice(i: Int, k: Int, list: List<Char>): List<Char> {
+        return list.slice(i..<k)
+    }
+
+    // 19. Rotate a list N places to the left
+    fun rotate(places: Int, list: List<Char>): List<Char> {
+        return when {
+            places > 0 -> list.takeLast(list.size - places) + list.take(places)
+            places < 0 -> list.takeLast(places * -1) + list.take(list.size + places)
+            else -> list
+        }
+
+    }
+
+    // 20. Remove the Kth element from a list
+    fun removeAt(k: Int, list: List<Char>): Pair<List<Char>, Char> {
+        // Convert to mutable list and remove element
+        // val mutable = list.toMutableList()
+        // val removedElement = mutable.removeAt(k)
+        // return Pair(mutable.toList(), removedElement)
+
+        // Return filtered list and element
+        return Pair(list.filterIndexed { index, _ -> index != k}, list[k])
+    }
 }

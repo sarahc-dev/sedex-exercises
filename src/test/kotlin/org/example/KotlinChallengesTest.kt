@@ -7,6 +7,7 @@ class KotlinChallengesTest {
     val list = listOf(1, 1, 2, 3, 5, 8)
     val listWithDuplicates = "aaaabccaadeeee".toList()
 
+    // 1.
     @Test
     fun `finds the last element of a list`() {
         val expected = 8
@@ -14,6 +15,7 @@ class KotlinChallengesTest {
         assertEquals(expected, actual)
     }
 
+    // 2.
     @Test
     fun `finds the last element but one of a list`() {
         val expected = 5
@@ -21,6 +23,7 @@ class KotlinChallengesTest {
         assertEquals(expected, actual)
     }
 
+    // 3.
     @Test
     fun `finds the nth element of a list`() {
         val expected = 2
@@ -28,6 +31,7 @@ class KotlinChallengesTest {
         assertEquals(expected, actual)
     }
 
+    // 4.
     @Test
     fun `finds the number of elements in a list`() {
         val expected = 6
@@ -35,6 +39,7 @@ class KotlinChallengesTest {
         assertEquals(expected, actual)
     }
 
+    // 5.
     @Test
     fun `reverses the list`() {
         val expected = listOf(8, 5, 3, 2, 1, 1)
@@ -42,6 +47,7 @@ class KotlinChallengesTest {
         assertEquals(expected, actual)
     }
 
+    // 6.
     @Test
     fun `returns false when list is not a palindrome`() {
         val expected = false
@@ -65,6 +71,7 @@ class KotlinChallengesTest {
         assertEquals(expected, actual)
     }
 
+    // 7.
     @Test
     fun `flattens a nested list`() {
         val nestedList = listOf(listOf(1, 1), listOf(3, 5))
@@ -86,6 +93,7 @@ class KotlinChallengesTest {
     // val listFinal = listOf(listOf(1, 1), 2, listOf(3, listOf(5, 8)))
     }
 
+    // 8.
     @Test
     fun `eliminates consecutive duplicates`() {
         val expected = listOf('a', 'b', 'c', 'd', 'e')
@@ -93,6 +101,7 @@ class KotlinChallengesTest {
         assertEquals(expected, actual)
     }
 
+    // 9.
     @Test
     fun `packs consecutive duplicates into sublists`() {
         val expected = listOf(listOf('a', 'a', 'a', 'a'), listOf('b'), listOf('c', 'c'), listOf('a', 'a'), listOf('d'), listOf('e', 'e', 'e', 'e'))
@@ -100,6 +109,7 @@ class KotlinChallengesTest {
         assertEquals(expected, actual)
     }
 
+    // 10.
     @Test
     fun `run-length encoding of a list`() {
         val expected = listOf(Pair(4, 'a'), Pair(1, 'b'), Pair(2, 'c'), Pair(2, 'a'), Pair(1, 'd'), Pair(4, 'e'))
@@ -107,6 +117,7 @@ class KotlinChallengesTest {
         assertEquals(expected, actual)
     }
 
+    // 11.
     @Test
     fun `modify run-length encoding`() {
         val expected = listOf(Pair(4, 'a'), 'b', Pair(2, 'c'), Pair(2, 'a'), 'd', Pair(4, 'e'))
@@ -161,6 +172,34 @@ class KotlinChallengesTest {
     fun `split a list into two parts`() {
         val expected = Pair(listOf('a', 'b', 'c'), listOf('d', 'e', 'f', 'g', 'h', 'i', 'j', 'k'))
         val actual = KotlinChallenges().split(3, "abcdefghijk".toList())
+        assertEquals(expected, actual)
+    }
+
+    // 18.
+    @Test
+    fun `extract a slice from a list`() {
+        val expected = listOf('d', 'e', 'f', 'g')
+        val actual = KotlinChallenges().slice(3, 7, "abcdefghijk".toList())
+        assertEquals(expected, actual)
+    }
+
+    // 19.
+    @Test
+    fun `rotate a list N places to the left`() {
+        val expectedPositive = listOf('d', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'a', 'b', 'c')
+        val expectedNegative = listOf('j', 'k', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i')
+        val kotlinChallenges = KotlinChallenges()
+        val actualPositive = kotlinChallenges.rotate(3, "abcdefghijk".toList())
+        val actualNegative = kotlinChallenges.rotate(-2, "abcdefghijk".toList())
+        assertEquals(expectedPositive, actualPositive)
+        assertEquals(expectedNegative, actualNegative)
+    }
+
+    // 20.
+    @Test
+    fun `remove the kth element from a list`() {
+        val expected = Pair(listOf('a', 'c', 'd'), 'b')
+        val actual = KotlinChallenges().removeAt(1, "abcd".toList())
         assertEquals(expected, actual)
     }
 }
